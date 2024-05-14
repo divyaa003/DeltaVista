@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- google fonts -->
+
+    <style>
+         *{
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  
+}
+
+        body {
+            background-color: #fff; /* Light gray background */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            height: 100vh; /* Full height */
+            background-color: rgb(35, 41, 49);
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 20px; /* Rounded corners */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            padding: 20px; /* Padding inside container */
+            max-width: 600px; /* Limit container width */
+            width: 100%; /* Full width */
+            position: relative; /* Position for background */
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 0; /* Remove top margin for heading */
+            color: #da7313; /* Blue heading color */
+            font-family: 'Arial Black', sans-serif; /* Bold font */
+            text-shadow: 0px 1px 2px black; /* Text shadow for depth */
+            letter-spacing: 0px; /* Increase letter spacing */
+        }
+
+
+        #chat-container {
+            height: 300px; /* Set height for chat container */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            margin-bottom: 20px; /* Add margin at the bottom */
+        }
+
+        .chat-message {
+            margin-bottom: 10px; /* Add space between chat messages */
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center content vertically */
+        }
+
+        .user-message, .bot-message {
+            padding: 10px 15px; /* Padding for message bubbles */
+            border-radius: 8px; /* Rounded corners for message bubbles */
+            max-width: 70%; /* Limit width for message bubbles */
+            display: inline-block; /* Display as inline block */
+            position: relative; /* Position for image */
+        }
+
+        .user-message::before, .bot-message::before {
+            content: ''; /* Empty content */
+            width: 20px; /* Width of image */
+            height: 20px; /* Height of image */
+            position: absolute; /* Position for image */
+            top: 50%; /* Align to center vertically */
+            transform: translateY(-50%); /* Adjust for vertical centering */
+            background-size: cover; /* Cover background */
+            background-position: center; /* Center background */
+        }
+
+        .user-message::before {
+            background-image: url('https://via.placeholder.com/20x20'); /* User icon/image */
+            left: -25px; /* Position to the left */
+            border-radius: 50%; /* Circular shape */
+        }
+
+        .bot-message::before {
+            background-image: url('https://via.placeholder.com/20x20'); /* Bot icon/image */
+            right: -25px; /* Position to the right */
+            border-radius: 50%; /* Circular shape */
+        }
+
+        .user-message {
+            background-color: #007bff; /* Blue background for user messages */
+            color: #fff; /* White text color for user messages */
+            align-self: flex-end; /* Align user messages to the right */
+        }
+
+        .bot-message {
+            background-color: #da7313; /* Green background for bot messages */
+            color: #fff; /* White text color for bot messages */
+            align-self: flex-start; /* Align bot messages to the left */
+        }
+
+        .input-group {
+            margin-bottom: 20px; /* Add margin at the bottom */
+        }
+
+        #user-input {
+            border-radius: 8px; /* Rounded corners for input field */
+        }
+
+        button[type="submit"] {
+            font-weight: 600;
+            border-radius: 8px; /* Rounded corners for submit button */
+            background-color: #da7313;
+            border-color: #da7313;
+            color: #fff;
+        }
+        button[type="submit"]:hover {
+            background-color: #865322;
+            color: #fff;
+        }
+
+        .main-txt .chatbot-head{
+            margin-bottom: 30px;
+            text-shadow: 0px 1px 1px black;
+            font-weight: 600;
+            color: black;
+}
+        .chatbot-head .firstletter{
+            color: #da7313;
+    font-weight: 700;
+    text-shadow: 0px 1px 1px black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-txt">
+            <h1 style="text-align: center;" class="chatbot-head" id="experiance">Your<span class="firstletter"> Assistance</span></h1>
+          </div>
+        <div id="chat-container">
+            <div class="chat-message">
+                <div class="user-message">
+                    <p>Hello! How can I assist you today?</p>
+                </div>
+            </div>
+        </div>
+        <form id="chat-form">
+            <div class="input-group">
+                <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
+                <div class="input-group-append">
+                    <button type="submit" class="btn">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#chat-form').on('submit', function(e){
+                e.preventDefault();
+                var userMessage = $('#user-input').val();
+                $('#chat-container').append('<div class="chat-message"><div class="user-message"><p>' + userMessage + '</p></div></div>');
+                $('#user-input').val('');
+                $.ajax({
+                    type: 'POST',
+                    url: '/get_response',
+                    data: { message: userMessage },
+                    success: function(response){
+                        $('#chat-container').append('<div class="chat-message"><div class="bot-message"><p>' + response + '</p></div></div>');
+                        $("#chat-container").scrollTop($("#chat-container")[0].scrollHeight);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

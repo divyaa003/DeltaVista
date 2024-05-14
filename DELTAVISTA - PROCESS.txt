@@ -1,0 +1,59 @@
+
+STEPS TO RUN THE PROJECT
+
+Step 01 : Install the Xampp and Start the Apache Server and MySQL Database [ Localhost ].
+
+Step 02 :Open the Project Folder. Search for Delta.sql File.
+
+Step 03 : Import Delta.sql File in the Xampp - MySQL Database.
+
+Step 04 : Open the Project Folder in Command Prompt
+
+Step 05 : Type the Following Command - py main1.py 
+
+Step 06 : Again Go the Project Folder. Search for Chatbot Folder
+
+Step 07 : Open the Chatbot Folder in Command Prompt
+
+Step 08 : Type the Following Command - py app.py
+
+Step 09 : Now You Executed the Complete Project.
+
+PROCESS
+
+1. As a New-User you need to Register first using the Sign Up button in the Login Form.
+
+2. After Successfull Registration, You can Login Using Your Credentials.
+
+3. Then you can Explore the Unfamiliar as well as Familiar places in Kumbakonam and Mannargudi Delta regions.
+
+4. On the Navigation Bar You can See Kumbakonam, Mannargudi and Chatbot. 
+
+    For Image Detection : 
+          
+           ~ If  you want to Detect Kumbakonam Image, Just go the Kumbakonam in Navigation Bar.
+
+           ~ Upload your Image, and press Detect Button.
+
+           ~ You will get the Name, Description, Live Weather and Intereactive Map of the place.
+
+           ~ And the same process for Mannargudi.
+
+    For Chatbot :
+ 
+           ~ If  you have any queries regarding the Application as well as the place, 
+
+              you can directly as to the Live assistance - Chatbot.
+
+           ~ Just Navigate to the Chatbot in the Navigation Bar, Where you can ask your Queries, 
+
+              It will provide the Immediate Response for your Queries.
+
+
+											----------THANK YOU !----------
+           
+
+
+
+
+
